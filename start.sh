@@ -18,6 +18,6 @@ python3 manage.py collectstatic --no-input
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn boloo.wsgi:application \
+exec gunicorn apnaschool.wsgi:application \
     --bind 0.0.0.0:25000 \
     --workers 5
