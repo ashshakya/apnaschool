@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+</head>
+<script type="text/javascript">
+$( "#number" ).keyup(function() {
+    numberval = $('#number').val();
+
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "PHP-FILE.php", // replace 'PHP-FILE.php with your php file
+        data: {number: numberval},
+        success: function(data) {
+           $('#name').val(data["name"]);
+           $("#email").val(data["email"]);
+        },
+        error : function(){
+           alert('Some error occurred!');
+        }
+    });
+});
+</script>
+
+<body>
+
+  <h2>Responsive Checkout Form</h2>
+  <p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+  <div class="row">
+    <div class="col-75">
+      <div class="container">
+        <form action="/action_page.php">
+
+          <div class="row">
+            <div class="col-50">
+              <h3>Student Details</h3>
+              <label readonly="readonly" for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+              <label for="email"><i class="fa fa-envelope"></i> student Code</label>
+              <input type="text" id="unique_code" name="email" placeholder="john@example.com">
+              <label for="adr"><i class="fa fa-address-card-o"></i> standard</label>
+              <input type="text" id="standard" name="address" placeholder="542 W. 15th Street">
+              <label for="city"><i class="fa fa-institution"></i> Category</label>
+              <input type="text" id="Category" name="city" placeholder="New York">
+            </div>
+
+            <div class="col-50">
+              <h3>Payment</h3>
+              <!-- <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div> -->
+              <div class="row">
+                <div class="col-50">
+                  <label for="monthfrom">Month From</label>
+                  <input type="date" id="monthfrom" name="monthfrom" placeholder="2018">
+                </div>
+                <div class="col-50">
+                  <label for="monthto">Month To</label>
+                  <input type="date" id="monthto" name="monthto" placeholder="352">
+                </div>
+              </div>
+              <label for="cname">Tution Fee</label>
+              <input type="text" id="tutionfee" name="cardname" placeholder="John More Doe">
+              <label for="ccnum">Concession</label>
+              <input type="text" id="concession" name="cardnumber" placeholder="1111-2222-3333-4444">
+              <label for="expmonth">Other Charges</label>
+              <input type="text" id="others" name="expmonth" placeholder="September">
+              <label for="expmonth">Remarks</label>
+              <input type="text" id="remarks" name="remarks" placeholder="Remarks">
+            </div>
+
+          </div>
+          <input type="submit" value="Submit" class="btn">
+        </form>
+      </div>
+    </div>
+  <div class="col-25">
+    <div class="container">
+        <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

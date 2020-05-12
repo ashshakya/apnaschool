@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: ["sh", "/code/start.sh"]
+    volumes:
+      - .:/code
+      - /var/log/apnaschool:/var/log/apnaschool
+      - /static/apnaschool:/static/apnaschool
+      - /home/ubuntu/mapping:/mapping
+    expose:
+      - "25000"
+    ports:
+      - "25000:25000"
+    restart: always
+  
+  # celery:
+  #   build: .
+  #   command: celery -A apnaschool worker -l info
+  #   volumes:
+  #     - .:/code
+  #   restart: always
+
+  # redis:
+  #   build: .
+  #   command: ["redis-server", "--appendonly", "yes"]
+  #   hostname: redis
+  #   volumes:
+  #       - ../../configs/nginx:/etc/nginx/conf.d
+  #   expose:
+  #     - "5672"
+  #   ports:
+  #     - "5672:5672"
+  #   restart: always
